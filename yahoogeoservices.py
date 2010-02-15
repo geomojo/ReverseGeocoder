@@ -1,13 +1,8 @@
-import httplib
 import urllib
-import urllib2
 import math
-import xml
-import socket
 import sys
 from xml.dom.minidom import parseString
 from xml.parsers.expat import ExpatError
-import pdb
 
 
 '''Module implementing a client for Yahoo\'s GeoServices
@@ -134,10 +129,9 @@ class YahooGeoServices(YahooServices):
     #Geocodes the string and returns the most probable place associated to it.
     def geocode(self, str):
         try:
-            con = httplib.HTTPConnection("where.yahooapis.com")
-            con.request("GET", "/v1/places.q(%s)?appid=%s&format=xml" % (urllib.quote(str), self.appId))
-            response = con.getresponse()
-            data = response.read()
+            url = "http://where.yahooapis.com/v1/places.q(%s)?appid=%s&format=xml" % (urllib.quote(str), self.appId)
+            con = urllib.urlopen(url)
+            data = con.read()
             con.close()
             dom = parseString(data)
             if dom.getElementsByTagName("woeid"):
