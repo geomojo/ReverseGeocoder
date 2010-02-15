@@ -1,0 +1,9 @@
+Small python wrapper for yahoo's geo services.
+
+There are two classes in this module.
+GeoPlanetPlace: Which is used to represent a Place with a given WoeId
+YahooGeoServices: Which is used to retrive GeoPlanetPlaces from either text which is geocoded, or from coordinates.
+
+View geo_test.py for a small sample of code.
+
+This work is licensed under a Creative Commons Attribution 2.0 UK: England & Wales License.
